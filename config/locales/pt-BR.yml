@@ -1,2 +1,6 @@
 'pt-BR':
+<<<<<<< HEAD
   hello: "Olá, Brasil"
+=======
+  hello: "Olá Mundo!"
+>>>>>>> 8925a53b7c0709827e76d8ff8ac733169087a9bf
