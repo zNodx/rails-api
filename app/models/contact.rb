@@ -28,7 +28,7 @@ class Contact < ApplicationRecord
   # end
 
   # def author
-  #   "Jackson Pires"
+  #   "Mateus Santos"
   # end
 
   # def kind_description
