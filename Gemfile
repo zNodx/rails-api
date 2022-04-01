@@ -6,15 +6,12 @@ git_source(:github) do |repo_name|
 end
 
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.1'
-# Repository for collecting Locale data for Ruby on Rails I18n as well as other interesting, Rails related I18n stuff
 gem 'rails-i18n', '~> 5.0.0'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3', '~> 1.3.0'
-# Use Puma as the app server
+gem 'sqlite3'
 gem 'puma', '~> 3.0'
-
+gem 'kaminari'
+# gem 'api-pagination'
 gem 'foreman'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.5'
@@ -27,6 +24,7 @@ gem 'foreman'
 # gem 'capistrano-rails', group: :development
 gem 'devise_token_auth'
 gem 'devise-i18n'
+gem 'rspec-rails', '~> 3.5'
 gem 'rack-cors'
 gem 'jwt'
 gem 'active_model_serializers', '~> 0.10.0'

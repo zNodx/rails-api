@@ -1,10 +1,20 @@
+module V1 
+
 class ContactsController < ApplicationController
+
   before_action :set_contact, only: [:show, :update, :destroy]
 
-  def index
-    @contacts = Contact.all
+  include ErrorSerializer
 
-    render json: @contacts #, methods: :birthdate_br #[:hello, :i18n]
+  def index
+    page_number = params[:page].try(:[], :number)
+    per_page = params[:page].try(:[], :size)
+    
+    @contacts = Contact.all.page(page_number).per(per_page)
+
+    if stale?(etag: @contacts)
+      render  json: @contacts #, methods: :birthdate_br #[:hello, :i18n]
+    end
   end
 
   def show
@@ -17,8 +27,8 @@ class ContactsController < ApplicationController
     if @contact.save
       render json: @contact, include: [:kind, :phones, :address],  status: :created, location: @contact
     else
-      render json: @contact.errors, status: :unprocessable_entity
-    end
+      render json: ErrorSerializer.serialize(@contact.errors)
+         end
   end
 
   def update

@@ -13,4 +13,6 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
       headers: :any,
       methods: [:get, :post, :put, :patch, :delete, :options, :head]
   end
+
+  Rails.application.config.middleware.use "AppName", "Notebook API - OK!"
 end
