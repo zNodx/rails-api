@@ -14,5 +14,7 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
       methods: [:get, :post, :put, :patch, :delete, :options, :head]
   end
 
-  Rails.application.config.middleware.use "AppName", "Notebook API - OK!"
+  unless Rails.env.test?
+    Rails.application.config.middleware.use "AppName", "Notebook API - OK!"
+  end
 end
