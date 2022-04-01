@@ -25,7 +25,8 @@ gem 'foreman'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
+gem 'devise_token_auth'
+gem 'devise-i18n'
 gem 'rack-cors'
 gem 'jwt'
 gem 'active_model_serializers', '~> 0.10.0'

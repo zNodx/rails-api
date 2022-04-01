@@ -1,5 +1,7 @@
 class KindsController < ApplicationController
 
+  before_action :authenticate_user!
+
   #TOKEN = "secret123"
 
   # include ActionController::HttpAuthentication::Basic::ControllerMethods
@@ -8,10 +10,8 @@ class KindsController < ApplicationController
   # include ActionController::HttpAuthentication::Digest::ControllerMethods
   # USERS = { "jack" => Digest::MD5.hexdigest(["jack","Application","secret"].join(":"))}
 
-  TOKEN = "secret123"
   include ActionController::HttpAuthentication::Token::ControllerMethods
 
-  before_action :authenticate
   before_action :set_kind, only: [:show, :update, :destroy]
 
   def index
@@ -59,16 +59,16 @@ class KindsController < ApplicationController
       params.require(:kind).permit(:description)
     end
 
-    def authenticate
-
-      hmac_secret = 'my$ecretK3y'
-      JWT.decode token, hmac_secret, true, { :algorithm => 'HS256' }
+    #def authenticate
+    #
+     # hmac_secret = 'my$ecretK3y'
+      #JWT.decode token, hmac_secret, true, { :algorithm => 'HS256' }
 
       # authenticate_or_request_with_http_token do |token, options|
       #   ActiveSupport::SecurityUtils.secure_compare(
       #     ::Digest::SHA256.hexdigest(token),
       #     ::Digest::SHA256.hexdigest(TOKEN)
       #   )
-      end
-    end
+      #end
+    #end
 end
